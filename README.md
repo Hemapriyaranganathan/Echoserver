@@ -21,7 +21,64 @@ Testing the server and client
 
 ## PROGRAM:
 
+SERVER :
+
+import socket
+
+HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
+PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    try:
+        s.bind((HOST, PORT))
+    except Exception as e:
+        print(f"Error binding to {HOST}:{PORT}: {e}")
+        exit()
+    
+    s.listen()
+    print(f"Listening on {HOST}:{PORT}...")
+
+    try:
+        conn, addr = s.accept()
+    except Exception as e:
+        print(f"Error accepting connection: {e}")
+        exit()
+
+    with conn:
+        print(f"Connected by {addr}")
+        while True:
+            try:
+                data = conn.recv(1024)
+                if not data:
+                    break
+                conn.sendall(data)
+            except Exception as e:
+                print(f"Error receiving/sending data: {e}")
+                exit()
+CLIENT:
+
+import socket
+HOST = "127.0.0.1"  # The server's hostname or IP address
+PORT = 65432  # The port used by the server
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((HOST, PORT))
+    s.sendall(b"Hemapriya,03/03/25")
+    data = s.recv(1024)
+
+print(f"Received {data!r}")
+
+                
+
 ## OUTPUT:
+
+SERVER:
+![server](https://github.com/user-attachments/assets/cee4d04e-e59d-42ee-9e5c-22191886f05a)
+
+CLIENT:
+![client](https://github.com/user-attachments/assets/75d039d2-a8be-408e-ab1e-25db139b4462)
+
+
+
 
 ## RESULT:
 The program is executed successfully
