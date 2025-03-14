@@ -1,6 +1,7 @@
-# Echoserver
+# EXP-01-Echoserver
 Echo server and client using python socket
-
+# REGISTER NUMBER:212222040055
+# DATE:
 # AIM:
 
 To develop a simple webserver to serve html programming pages.
@@ -20,9 +21,8 @@ Implementation using Python code
 Testing the server and client 
 
 ## PROGRAM:
-
-SERVER :
-
+# SERVER
+```
 import socket
 
 HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
@@ -55,29 +55,29 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             except Exception as e:
                 print(f"Error receiving/sending data: {e}")
                 exit()
-CLIENT:
-
+```
+# CLIENT
+```
 import socket
 HOST = "127.0.0.1"  # The server's hostname or IP address
 PORT = 65432  # The port used by the server
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
-    s.sendall(b"Hemapriya,03/03/25")
+    s.sendall(b"Mahisha 03-03-2025")
     data = s.recv(1024)
 
 print(f"Received {data!r}")
-
-                
+```
 
 ## OUTPUT:
+# SERVER:
 
-SERVER:
-![server](https://github.com/user-attachments/assets/cee4d04e-e59d-42ee-9e5c-22191886f05a)
-
-CLIENT:
-![client](https://github.com/user-attachments/assets/75d039d2-a8be-408e-ab1e-25db139b4462)
+![server](https://github.com/user-attachments/assets/663f8bf5-c978-4093-bb7b-792b41e7d4c1)
 
 
+# Client:
+
+![client](https://github.com/user-attachments/assets/868c1773-8a32-4670-b124-398fe4b7bec4)
 
 
 ## RESULT:
